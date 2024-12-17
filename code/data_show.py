@@ -31,7 +31,7 @@ if st.button("Check Now!") and city_input:
             st.session_state.weather_df = weather_df
             placeholder.success("Data acquisition success！")
         else:
-            placeholder.error("Out of api calls, please wait for next month。")
+            placeholder.error("Not a city name please try again。")
     else:
         placeholder.error("Enter a city name。")
 

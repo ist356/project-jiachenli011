@@ -23,3 +23,4 @@ Examples:
 
 `--- Reflection Below This Line ---`
 
+By using the Weatherstack API, I successfully retrieved real-time weather data and learned to process and organize the data into a clean, structured format. I also became more confident in handling data integration, such as extracting specific columns and merging multiple city weather results into a single DataFrame. However, there were still difficulties in creating interactive maps with Folium. While I mastered the basics such as plotting city locations, I struggled with custom map features such as color markings and pop-up details. To solve and complete, I used GitHub Copilot and ChatGPT tools to help me complete the code part. Through this process, I was able to complete the function, but I realized that there is still a lot to learn to fully utilize the potential of Folium.
