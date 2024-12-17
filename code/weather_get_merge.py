@@ -5,7 +5,7 @@ weather_api = "2ab8e147c79821aac1dce406053f3f40"
 
 def get_current_weather(city):
     """
-    从 Weatherstack API 获取指定城市的实时天气数据
+    Get real-time weather data for a specified city from the Weatherstack API
     """
     access_key = weather_api
     url = "http://api.weatherstack.com/current"
@@ -32,8 +32,8 @@ def get_current_weather(city):
     
 def weather_data_to_dataframe(weather_data: dict):
     """
-    将返回的天气数据转换为 Pandas DataFrame
-    weather_data: get_current_weather 返回的 JSON 数据
+    Convert the returned weather data to a Pandas DataFrame
+    weather_data: JSON data returned by get_current_weather
     return -> Pandas DataFrame
     """
     
@@ -100,25 +100,24 @@ def weather_data_to_dataframe(weather_data: dict):
 
 def merge_weather_data(cities: list) -> pd.DataFrame:
     """
-    合并多个城市的当前天气数据到一个 DataFrame
-    cities: 城市列表，例如 ["Shanghai", "Beijing"]
-    return -> 包含所有城市当前天气数据的 DataFrame
+    Merge the current weather data of multiple cities into one DataFrame
+    cities: list of cities,
+    return -> DataFrame containing the current weather data of all cities
     """
-    all_data = []  # 存储每个城市的天气数据
+    all_data = []  
 
     for city in cities:
         weather_data = get_current_weather(city)
 
         if weather_data:
-            # 提取数据，转换为字典
-            extracted_data = weather_data["location"].copy()  # 拷贝 location 字段
-            extracted_data.update(weather_data["current"])   # 合并 current 字段
-            extracted_data["City"] = weather_data["location"]["name"]  # 添加城市名称
+            extracted_data = weather_data["location"].copy()  
+            extracted_data.update(weather_data["current"])   
+            extracted_data["City"] = weather_data["location"]["name"]  
             all_data.append(extracted_data)
         else:
             print(f"Not able to get {city} data, try another one。")
 
-    # 合并数据为 DataFrame
+    
     return pd.DataFrame(all_data)
 
 
